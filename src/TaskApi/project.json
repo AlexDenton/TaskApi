@@ -12,7 +12,11 @@
     "Microsoft.AspNetCore.Mvc": "1.0.1",
     "TaskApi.Application": "1.0.0-*",
     "TaskApi.Domain": "1.0.0-*",
-    "TaskApi.Application.Dto": "1.0.0-*"
+    "TaskApi.Application.Dto": "1.0.0-*",
+    "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0",
+    "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
+    "TaskApi.Infrastructure": "1.0.0-*"
   },
 
   "tools": {

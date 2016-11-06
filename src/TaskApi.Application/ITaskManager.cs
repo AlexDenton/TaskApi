@@ -8,6 +8,6 @@ namespace TaskApi.Application
     {
         IEnumerable<TaskDto> GetTasks();
 
-        void CreateTask(TaskDto task);
+        void CreateTask(TaskDto taskDto);
     }
 }
