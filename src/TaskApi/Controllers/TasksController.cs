@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskApi.Application;
 using TaskApi.Application.Dto;
@@ -16,9 +17,9 @@ namespace TaskApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<TaskDto> Get()
+        public async Task<IEnumerable<TaskDto>> Get()
         {
-            return _TaskManager.GetTasks();
+            return await _TaskManager.GetTasks();
         }
 
         [HttpPost]

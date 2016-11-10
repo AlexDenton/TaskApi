@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using Microsoft.Extensions.Options;
@@ -15,6 +16,14 @@ namespace TaskApi.Infrastructure
         public TaskRepository(IOptions<AppSettings> appSettings)
         {
             _AppSettings = appSettings.Value;
+        }
+
+        public async Task<IEnumerable<Domain.Task>> GetTasks()
+        {
+            using (var connection = new SqlConnection(_AppSettings.ConnectionStrings.DefaultConnection))
+            {
+                return await connection.QueryAsync<Domain.Task>("Get_Tasks");
+            }
         }
 
         public async Task<Domain.Task> InsertTask(Domain.Task task)

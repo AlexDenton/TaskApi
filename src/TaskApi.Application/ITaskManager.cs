@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TaskApi.Application.Dto;
 
 namespace TaskApi.Application
 {
     public interface ITaskManager
     {
-        IEnumerable<TaskDto> GetTasks();
+        Task<IEnumerable<TaskDto>> GetTasks();
 
-        void CreateTask(TaskDto taskDto);
+        Task CreateTask(TaskDto taskDto);
     }
 }

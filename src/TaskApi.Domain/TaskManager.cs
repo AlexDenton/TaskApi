@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TaskApi.Application.Dto;
 
 namespace TaskApi.Domain
 {
+    using System.Threading.Tasks;
     using TaskApi.Application;
 
     public class TaskManager : ITaskManager
@@ -14,33 +16,26 @@ namespace TaskApi.Domain
             _TaskRepository = taskRepository;
         }
 
-        private IList<TaskDto> Tasks { get; set; } = new List<TaskDto>
+        public async Task<IEnumerable<TaskDto>> GetTasks()
         {
-            new TaskDto()
-            {
-                Name = "task1"
-            },
-            new TaskDto()
-            {
-                Name = "task2"
-            }
-        };
+            var tasks = await _TaskRepository.GetTasks();
 
-        public IEnumerable<TaskDto> GetTasks()
-        {
-            return Tasks;
+            return tasks.Select(t => 
+                new TaskDto()
+                {
+                    Id = t.Id,
+                    Name = t.Name
+                });
         }
 
-        public void CreateTask(TaskDto taskDto)
+        public async System.Threading.Tasks.Task CreateTask(TaskDto taskDto)
         {
-            Tasks.Add(taskDto);
-
             var task = new Task
             {
                 Name = taskDto.Name
             };
 
-            _TaskRepository.InsertTask(task);
+            await _TaskRepository.InsertTask(task);
         }
     }
 }
