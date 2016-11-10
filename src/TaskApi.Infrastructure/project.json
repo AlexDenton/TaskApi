@@ -2,9 +2,11 @@
   "version": "1.0.0-*",
 
   "dependencies": {
+    "Dapper": "1.50.2",
     "Microsoft.Extensions.Options": "1.0.0",
     "NETStandard.Library": "1.6.0",
     "System.Data.SqlClient": "4.1.0",
+    "TaskApi.Application": "1.0.0-*",
     "TaskApi.Domain": "1.0.0-*"
   },
 

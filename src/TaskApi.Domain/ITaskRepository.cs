@@ -1,7 +1,9 @@
-﻿namespace TaskApi.Domain
+﻿using System.Threading.Tasks;
+
+namespace TaskApi.Domain
 {
     public interface ITaskRepository
     {
-        Task InsertTask(Task task);
+        Task<Domain.Task> InsertTask(Task task);
     }
 }
