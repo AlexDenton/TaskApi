@@ -8,5 +8,7 @@ namespace TaskApi.Domain
         Task<Domain.Task> InsertTask(Task task);
 
         Task<IEnumerable<Domain.Task>> GetTasks();
+
+        Task<Domain.Task> UpdateTask(Domain.Task task);
     }
 }

@@ -37,5 +37,22 @@ namespace TaskApi.Domain
 
             await _TaskRepository.InsertTask(task);
         }
+
+        public async Task<TaskDto> UpdateTask(TaskDto taskDto)
+        {
+            var task = new Task
+            {
+                Id = taskDto.Id,
+                Name = taskDto.Name
+            };
+
+            var updatedTask = await _TaskRepository.UpdateTask(task);
+
+            return new TaskDto
+            {
+                Id = updatedTask.Id,
+                Name = updatedTask.Name
+            };
+        }
     }
 }

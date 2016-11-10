@@ -10,5 +10,7 @@ namespace TaskApi.Application
         Task<IEnumerable<TaskDto>> GetTasks();
 
         Task CreateTask(TaskDto taskDto);
+
+        Task<TaskDto> UpdateTask(TaskDto taskDto);
     }
 }

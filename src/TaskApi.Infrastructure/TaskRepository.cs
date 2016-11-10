@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using TaskApi.Application;
 using TaskApi.Domain;
 using System.Threading.Tasks;
+using Task = TaskApi.Domain.Task;
 
 namespace TaskApi.Infrastructure
 {
@@ -23,6 +24,23 @@ namespace TaskApi.Infrastructure
             using (var connection = new SqlConnection(_AppSettings.ConnectionStrings.DefaultConnection))
             {
                 return await connection.QueryAsync<Domain.Task>("Get_Tasks");
+            }
+        }
+
+        public async Task<Task> UpdateTask(Task task)
+        {
+            using (var conneciton = new SqlConnection(_AppSettings.ConnectionStrings.DefaultConnection))
+            {
+                await conneciton.ExecuteAsync(
+                    "Update_Task",
+                    new
+                    {
+                        ID = task.Id,
+                        Name = task.Name
+                    },
+                    commandType: CommandType.StoredProcedure);
+
+                return task;
             }
         }
 

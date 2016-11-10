@@ -22,6 +22,14 @@ namespace TaskApi.Controllers
             return await _TaskManager.GetTasks();
         }
 
+        [HttpPut("{id}")]
+        public async Task<TaskDto> PutTask(string id, [FromBody]TaskDto taskDto)
+        {
+            taskDto.Id = id;
+            return await _TaskManager.UpdateTask(taskDto);
+        }
+
+
         [HttpPost]
         public void Post([FromBody]TaskDto task)
         {
